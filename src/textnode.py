@@ -4,6 +4,7 @@ class TextType(Enum):
     HTML = "html"
     LEAF = "leaf"
     TEXT = "text"
+    BOLD = "bold"
 
 class TextNode():
     def __init__(self, text, text_type, url=None):

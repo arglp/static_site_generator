@@ -1,7 +1,8 @@
 from textnode import *
 
 def main():
-    test = TextNode("i'm a test", "bold", "https://")
+    test = TextNode("i'm a test", HTML, "https://")
     print(test)
 
-main()
+if __name__ == "__main__":
+    main()
