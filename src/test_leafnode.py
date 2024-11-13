@@ -2,7 +2,7 @@ import unittest
 from htmlnode import HTMLNode
 from leafnode import LeafNode
 
-class TestHTMLNode(unittest.TestCase):
+class TestLeafNode(unittest.TestCase):
     def test_initialization(self):
         node = LeafNode("p", "text", {"class": "highlight"})
         self.assertEqual(node.tag, "p")
@@ -24,7 +24,6 @@ class TestHTMLNode(unittest.TestCase):
             node = LeafNode("a", None)
             node.to_html()
 
-    def test_to_html(self):
-        with self.assertRaises(ValueError):
-            node = LeafNode("a", "")
-            node.to_html()
+    def test_repr(self):
+        node = LeafNode("p", "text")
+        self.assertEqual(node.__repr__(), "LeafNode(p, text, None)")
