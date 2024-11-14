@@ -72,3 +72,6 @@ class TestParentNode(unittest.TestCase):
             parent_node2 = ParentNode(None, [child_node3])
             parent_node = ParentNode("p", [child_node, parent_node2], {"href": "google.at"})        
             parent_node.to_html()
+
+if __name__ == "__main__":
+    unittest.main()

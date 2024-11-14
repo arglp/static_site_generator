@@ -27,3 +27,6 @@ class TestLeafNode(unittest.TestCase):
     def test_repr(self):
         node = LeafNode("p", "text")
         self.assertEqual(node.__repr__(), "LeafNode(p, text, None)")
+
+if __name__ == "__main__":
+    unittest.main()
