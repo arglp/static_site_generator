@@ -68,20 +68,16 @@ def split_nodes_link(old_nodes):
             new_nodes.extend(split_nodes_link([TextNode(sections[1], TextType.TEXT)]))
     return new_nodes 
 
-
-
-node4 = TextNode("This is text with an ![image](https://i.imgur.com/zjjcJKZ.png[second image](https://i.imgur.com/3elNhQu.png)", TextType.TEXT,)
-
-
-
-
-
-node = TextNode("This ![alt text for image](url/of/image.jpg) some other text [This is another link](url/of/imagetwotwotwo.jpg) inbetween [Yet another link](url/aaa)", TextType.TEXT)
-node2 = TextNode("This is some bold text", TextType.BOLD) 
-node3 = TextNode(" some other text ![This is another link](url/of/imagetwotwotwo.jpg) inbetween", TextType.TEXT, None)
-
-print(split_nodes_image([node4]))
+def text_to_textnodes(text):
+    nodes = split_nodes_delimiter([TextNode(text, TextType.TEXT)], "**", TextType.BOLD)
+    nodes = split_nodes_delimiter(nodes, "*", TextType.ITALIC)
+    nodes = split_nodes_delimiter(nodes, "`", TextType.CODE)
+    nodes = split_nodes_image(nodes)
+    nodes = split_nodes_link(nodes)
+    return nodes
 
 
 
+string = "This is **text** with an *italic* word and a `code block` and an ![obi wan image](https://i.imgur.com/fJRm4Vk.jpeg) and a [link](https://boot.dev)"
+print(text_to_textnodes(string))
 
