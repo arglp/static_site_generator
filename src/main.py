@@ -1,14 +1,24 @@
 import os
 import shutil
 
-
-current_path = os.getcwd()
+def copy_src_dir(src_dir, dst_dir):
+    if os.path.exists(dst_dir):
+        shutil.rmtree(dst_dir)
+    os.mkdir(dst_dir)
+    src_objects = os.listdir(src_dir)
+    for object in src_objects:
+        src_path = os.path.join(src_dir, object)
+        dst_path = os.path.join(dst_dir, object)
+        if os.path.isfile(src_path):
+            print(f"copying: {src_path}")
+            shutil.copy(src_path, dst_path)
+        if os.path.isdir(src_path):
+            print(f"copying: {src_path}")
+            copy_src_dir(src_path, dst_path)        
+        
 def main():
-    source_dir = "static"
-    destination_dir = "public"
-    if os.path.exists(destination_dir):
-        shutil.rmtree(destination_dir)
-    os.mkdir(destination_dir)
+    copy_src_dir("static", "public")
+    
 
 if __name__ == "__main__":
     main()
