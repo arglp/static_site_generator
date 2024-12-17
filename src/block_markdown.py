@@ -81,7 +81,7 @@ def heading_to_html_node(block):
 
 def code_to_html_node(block):
     children = text_to_children(block[3:-3])
-    return ParentNode("pre", ParentNode("code", children))
+    return ParentNode("pre", [ParentNode("code", children)])
 
 def olist_to_html_node(block):
     items = block.split("\n")
